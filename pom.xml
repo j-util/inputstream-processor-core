@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>inputstream-processor</name>
-    <description>A Java HTTP client library for incrementally processing response bodies without buffering the entire payload.</description>
+    <description>Incrementally parse and process structured InputStream content one item at a time without materializing the complete input in memory.</description>
     <url>https://github.com/j-util/inputstream-processor</url>
 
     <licenses>
