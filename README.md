@@ -22,6 +22,16 @@ exception allowed out of the consumer terminates processing. Likewise, a parser
 can handle its own recoverable failures, while an `IOException` allowed out of
 the parser terminates processing.
 
+## Execution and concurrency
+
+Core V1 processing is synchronous and blocking. A parser emits items during its
+`parse(...)` call, so all emissions occur before `process(...)` returns.
+Asynchronous and reactive processing are outside this core artifact.
+
+`InputStreamProcessor` is immutable, but safe concurrent reuse depends on the
+configured parser being thread-safe. Separate processing calls must use separate
+`InputStream` instances; the processor does not add synchronization.
+
 ## JDK-only example
 
 ```java

@@ -16,8 +16,13 @@ import java.util.function.Consumer;
  * and counts successful consumer calls; it does not catch or classify parser or
  * consumer failures.</p>
  *
- * <p>This class is immutable. It does not close supplied input streams; stream
- * ownership remains with the caller.</p>
+ * <p>This class is immutable. Safe concurrent reuse of an instance depends on
+ * the configured parser being thread-safe. Separate processing calls must use
+ * separate {@link InputStream} instances. This processor does not add
+ * synchronization around the parser or processing calls.</p>
+ *
+ * <p>This processor does not close supplied input streams; stream ownership
+ * remains with the caller.</p>
  *
  * @param <T> the type of item processed
  */
